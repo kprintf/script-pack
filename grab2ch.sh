@@ -35,7 +35,7 @@ done
 
 while true 
 do
-	for thread in "$THREADS"
+	for thread in $THREADS
 	do
 		if [ $SAVE_THREAD == 1 ]
 		then
@@ -53,7 +53,7 @@ do
 			wget -N https://2ch.hk/${DOCPATH}.html -O $DOCFILE 
 		fi
 		
-		for i in `cat ${DOCFILE} | grep -o "/b/src/[^\"']*" | uniq`
+		for i in `cat ${DOCFILE} | grep -o "/src/[^\"']*" | uniq`
 		do 
 			if [ -f `echo $i | grep -o "[^/]*$"` ] 
 			then
@@ -67,9 +67,9 @@ do
 
 				if [ "$QUIET_LEVEL" == "-q2" ] 
 				then
-					wget 2ch.hk${i} > /dev/null 2> /dev/null
+					wget 2ch.hk/`echo $thread | grep -o "^[^/]*"`${i} > /dev/null 2> /dev/null
 				else
-					wget 2ch.hk${i} -q --show-progress
+					wget 2ch.hk/`echo $thread | grep -o "^[^/]*"`${i} -q --show-progress
 				fi
 
 			fi
