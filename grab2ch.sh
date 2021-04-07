@@ -48,9 +48,9 @@ do
 		
 		if [ "$QUIET_LEVEL" == "-q2" ]
 		then
-			wget -N https://2ch.hk/${DOCPATH}.html -O $DOCFILE > /dev/null 2> /dev/null
+			wget -N https://2ch.pm/${DOCPATH}.html -O $DOCFILE > /dev/null 2> /dev/null
 		else
-			wget -N https://2ch.hk/${DOCPATH}.html -O $DOCFILE 
+			wget -N https://2ch.pm/${DOCPATH}.html -O $DOCFILE 
 		fi
 		
 		for i in `cat ${DOCFILE} | grep -o "/src/[^\"']*" | uniq`
@@ -67,9 +67,9 @@ do
 
 				if [ "$QUIET_LEVEL" == "-q2" ] 
 				then
-					wget 2ch.hk/`echo $thread | grep -o "^[^/]*"`${i} > /dev/null 2> /dev/null
+					wget 2ch.pm/`echo $thread | grep -o "^[^/]*"`${i} > /dev/null 2> /dev/null
 				else
-					wget 2ch.hk/`echo $thread | grep -o "^[^/]*"`${i} -q --show-progress
+					wget 2ch.pm/`echo $thread | grep -o "^[^/]*"`${i} -q --show-progress
 				fi
 
 			fi
